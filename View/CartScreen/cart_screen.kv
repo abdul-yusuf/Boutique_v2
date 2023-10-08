@@ -1,5 +1,7 @@
 <CartScreenView>
     md_bg_color: app.theme_cls.bg_dark
+    on_enter: root.controller.get_list()
+    on_enter: view_2.refresh_from_data()
     MDBoxLayout:
         size_hint_y: None
         height: root.height - dp(55)
@@ -25,7 +27,7 @@
                 MDBoxLayout:
                     orientation: 'vertical'
                     MDLabel:
-                        text: "Price(2)"
+                        text: f"Price({root.items_qty})"
                         font_style: 'Body2'
                         halign: 'left'
                         theme_text_color: 'Custom'
@@ -76,7 +78,7 @@
         RecycleView:
             id: view_2
             do_scroll_x:False
-            data: app.cart_items
+            # data: root.controller.get_list()
             viewclass: 'CartTile'
             RecycleGridLayout:
                 cols:1

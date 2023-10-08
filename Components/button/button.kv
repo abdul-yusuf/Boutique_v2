@@ -244,7 +244,7 @@
                     icon: 'minus'
                     size: dp(25), dp(25)
                     pos_hint: {'center_x': .0,'center_y': 0.5}
-                    on_release:
+                    # on_release: self.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.controller.cart_remove_item(args[0][1]['id'],pro['pk'])
                         #qty.text = str(int(qty.text)-1) if int(qty.text)>1 else qty.text
                 MDLabel:
                     id: qty

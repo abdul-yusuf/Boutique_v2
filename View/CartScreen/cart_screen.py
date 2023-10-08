@@ -4,7 +4,7 @@ from kivy.properties import StringProperty, ListProperty
 class CartScreenView(BaseScreenView):
     total = StringProperty('___.__')
     items_price = StringProperty('___.__')
-    items_qty = StringProperty('2')
+    items_qty = StringProperty()
     shipping_fee = StringProperty('Free')
     order_id = StringProperty('********')
     
@@ -19,3 +19,11 @@ class CartScreenView(BaseScreenView):
     def testing(self) -> None:
         print('cart screen testing new model modifiers method')
 
+    def on_pre_enter(self, *args, **kwargs):
+        items_list = self.app.cart_items
+        self.items_qty = str(len(items_list))
+        price = 0
+        for i in items_list:
+            price += int(i['price'])
+        self.items_price = str(price)
+        self.total = str(price)

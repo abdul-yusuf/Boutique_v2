@@ -21,9 +21,10 @@
                 color: rgba(0, 0, 59, 255)
 
             MDLabel:
-                text: 'Create a new account'
+                text: 'HI Welcome to Emir Embroidery Design\nplease fill the form to create account'
                 font_size: '18sp'
-                pos_hint: {'center_x': .6, 'center_y': .8}
+                size_hint_x: .9
+                pos_hint: {'center_x': .55, 'center_y': .8}
                 color: rgba(127, 127, 127, 255)
 
             MDFloatLayout:
@@ -148,7 +149,7 @@
                 on_press: root.controller.server_request(phone_no.text, email.text, password.text)
                 canvas.before:
                     Color:
-                        rgb: rgba(52, 0, 231, 255)
+                        rgb: app.theme_cls.primary_color
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
@@ -162,7 +163,7 @@
 
             MDLabel:
                 text: 'or'
-                color: rgba(50, 0, 231, 255)
+                rgb: app.theme_cls.primary_color
                 pos_hint: {'center_y': .26}
                 font_size: '15sp'
                 halign: 'center'

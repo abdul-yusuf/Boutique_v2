@@ -96,7 +96,18 @@ class Tile(RecycleKVIDsDataViewBehavior, MDCard):
         self.father.app.add_screen('detail screen')
 
     def add_2_cart_btn(self):
-        self.father.model.add_item_to_cart('hello')
+        self.father.model.add_item_to_cart(
+                        {
+                            'name': self.name,
+                            'price': self.price,
+                            'sale_price': self.sale_price,
+                            'source': self.image,
+                            'unit': 'each',
+                            # 'product': 'None',
+                            # 'father': self,
+                        },
+                        view=self.father
+                    )
 
 class CartTile(RecycleKVIDsDataViewBehavior, MDCardSwipe):
     quantity = StringProperty('1')
@@ -117,6 +128,8 @@ class CartTile(RecycleKVIDsDataViewBehavior, MDCardSwipe):
                 t='in_quad',
                 d=2.5/1,
                 ).start(self.ids.front_box)
+
+    
 
 class QtyBox(MDBoxLayout):
     qty_value = StringProperty('10')

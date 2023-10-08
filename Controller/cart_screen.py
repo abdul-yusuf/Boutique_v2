@@ -24,3 +24,8 @@ class CartScreenController:
 
     def get_view(self) -> View.CartScreen.cart_screen:
         return self.view
+
+    def get_list(self):
+        self.view.ids.view_2.data = self.view.app.cart_items
+
+    

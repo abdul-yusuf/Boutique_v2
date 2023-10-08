@@ -111,6 +111,7 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 from Utility.api_request import Api_request
 from Components.factory import register_factory
+from kivymd.toast import toast
 
 from Model.database import DataBase
 
@@ -147,16 +148,37 @@ class EmroideryApp(MDApp):
         self.add_screen("home screen", first=True)
         Window.bind(on_key_down=self.go_back)
 
-        for x in range(1):
+        # for x in range(1):
+        #     self.cart_items.append(
+        #         {
+        #         'name':'Falmara',
+        #         'price': '1300',
+        #         'quantity': f'{x+2}',
+        #         'unit': 'pieces',
+        #         'source': 'assets/images/img/WA00032.jpg'
+        #         }
+        #     )
+    def add_item_to_cart(self, product):
+        added = False
+        for items in self.cart_items:
+            if product['name'] in items.values():
+                items['quantity'] = str(int(items['quantity'])+1)
+                items['price'] = str(int(items['price_tag'])*int(items['quantity']))
+                added = True
+            # else:
+        if not added:
             self.cart_items.append(
-                {
-                'name':'Falmara',
-                'price': '1300',
-                'quantity': f'{x+2}',
-                'unit': 'pieces',
-                'source': 'assets/images/img/WA00032.jpg'
-                }
-            )
+                    {
+                        'name':product['name'],
+                        'price': product['price'],
+                        'price_tag': product['price'],
+                        'quantity': '1',
+                        'unit': product['unit'],
+                        'source': product['source']
+                    }
+                )
+        toast("Product Added")
+        print(self.cart_items)
 
     def add_screen(self, name_screen, switch=True, first=False):
         if first:

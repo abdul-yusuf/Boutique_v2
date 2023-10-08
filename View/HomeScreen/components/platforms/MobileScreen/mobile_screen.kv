@@ -36,13 +36,14 @@
                         Label:
                             adaptive_size: True
                             text: "Emir Embroidery"
-                            color: get_color_from_hex(colors['Red']['800'])
+                            color: [1,1,1,1]
                             font_style: 'H1'
                             font_size: '26sp'
                             bold: True
                             halign: 'right'
-                            pos_hint: {'center_x':-0.5,'center_y': 0.5}
-                        Widget:
+
+                            pos_hint: {'center_x':0.5,'center_y': 0.5}
+                        # Widget:
                         MDIconButton:
                             icon: "account-circle-outline"
                             on_release: print(root.parent.model.data)
@@ -103,8 +104,8 @@
                                         pos_hint: {'center_x': .5, 'center_y': .5}
                                         on_press: print(root.parent.name)
                                     ImageBtn:
-                                        source: 'assets/images/img/WA00031.jpg'
-                                        title: 'English Wear'
+                                        source: 'assets/images/img/WA00046.jpg'
+                                        title: 'Caps'
                                         pos_hint: {'center_x': .5, 'center_y': .5}
                                     ImageBtn:
                                         source: 'assets/images/img/WA00032.jpg'
