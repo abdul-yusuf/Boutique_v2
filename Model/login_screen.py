@@ -55,3 +55,6 @@ class LoginScreenModel(BaseScreenModel):
                     return True
                 return False
             instance.text = 'Enter Email or Phone no'
+    def authenticate(self, email, pwd):
+        print(email, pwd) 
+        

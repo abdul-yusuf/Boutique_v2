@@ -26,4 +26,9 @@ class LoginScreenController:
         return self.view
 
     def get_request(self):
-        self.view.app.add_screen("email verification screen", first=True)
+        email = self.view.mobile_view.ids.username.text
+        pwd = self.view.mobile_view.ids.password.text
+        if self.model.authenticate(email, pwd):
+            self.view.app.add_screen("email verification screen", first=True)
+        else:
+            print('Error authenticating')

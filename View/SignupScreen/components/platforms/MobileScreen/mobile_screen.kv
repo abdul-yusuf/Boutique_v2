@@ -145,7 +145,7 @@
                 background_color: 0, 0, 0, 0
                 pos_hint: {'center_x': .5, 'center_y': .34}
                 on_release:
-                    on_press: root.controller.server_request(phone_no.text, email.text, password.text)
+                on_press: root.controller.server_request(phone_no.text, email.text, password.text)
                 canvas.before:
                     Color:
                         rgb: rgba(52, 0, 231, 255)

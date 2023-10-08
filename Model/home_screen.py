@@ -9,9 +9,8 @@ class HomeScreenModel(BaseScreenModel):
     def __init__(self, database):
         # Just an example of the data. Use your own values.
         self._data = None
-
-        self.value = [
-        ]
+        nevaons
+        self.value = []
         liked = []
         for x in range(20):
             liked.append(random.randint(1,20))
@@ -29,7 +28,7 @@ class HomeScreenModel(BaseScreenModel):
             'sale_price': sale_price,
             'image': f'assets/images/img/WA0003{random.randint(1,9)}.jpg',
             'product': 'None',
-            # 'father': self,
+            'father': self,
             'rating': '3.5',
             'absolute_url': 'None',
             'callback_func': 'None',
