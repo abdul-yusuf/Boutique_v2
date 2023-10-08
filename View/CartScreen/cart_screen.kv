@@ -1,0 +1,121 @@
+<CartScreenView>
+    md_bg_color: app.theme_cls.bg_dark
+    MDBoxLayout:
+        size_hint_y: None
+        height: root.height - dp(55)
+        padding: dp(20)
+        spacing: dp(15)
+        orientation: 'vertical'
+        BoxWithShadow:
+            size_hint_y: None
+            height: root.height/4
+            padding: dp(20)
+            pos_hint: {'top':1}
+            orientation: 'vertical'
+            MDLabel:
+                adaptive_height: True
+                id: order_ref_code
+                text: root.order_id
+                halign: 'center'
+                font_style: 'Caption'
+                theme_text_color: 'Custom'
+                color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+            MDBoxLayout:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text: "Price(2)"
+                        font_style: 'Body2'
+                        halign: 'left'
+                        theme_text_color: 'Custom'
+                        color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+                    MDLabel:
+                        text: "Shipping"
+                        font_style: 'Body2'
+                        halign: 'left'
+                        theme_text_color: 'Custom'
+                        color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+                    MDSeparator:
+                    MDLabel:
+                        text: "Total"
+                        font_style: 'H6'
+                        halign: 'left'
+                        theme_text_color: 'Custom'
+                        color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        id: products_price
+                        text: "₦ {}".format(root.items_price)
+                        font_style: 'Body2'
+                        halign: 'right'
+                        theme_text_color: 'Custom'
+                        color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+                    MDLabel:
+                        id: shipping_price
+                        text: root.shipping_fee
+                        font_style: 'Body2'
+                        halign: 'right'
+                        theme_text_color: 'Custom'
+                        color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+                    MDSeparator:
+                    MDLabel:
+                        id: total_all
+                        text: "₦ {}".format(root.total)
+                        font_style: 'H6'
+                        halign: 'right'
+                        theme_text_color: 'Custom'
+                        color: [1, 1, 1, 1] if app.theme_cls.theme_style=='Dark' else [0,0,0,1]
+
+        RecycleView:
+            id: view_2
+            do_scroll_x:False
+            data: app.cart_items
+            viewclass: 'CartTile'
+            RecycleGridLayout:
+                cols:1
+                spacing: dp(20)
+                adaptive_height: True
+                default_size: None, None
+                default_size_hint: .1, None
+                padding: dp(5)
+                size_hint_y: None
+                height: self.minimum_height
+        MDFillRoundFlatButton:
+            id: checkout_btn
+            text: 'Checkout'
+            font_style: 'Button'
+            font_size: '20sp'
+            size_hint: .9, .114
+            height: dp(40)
+            #disabled: 'True' if view_2.data==[] else False
+            rounded_button: False
+            pos_hint: {'center_x': 0.5,'center_y': 1}
+            on_release:
+                app.add_screen('checkout screen')
+
+    # MDFloatLayout:
+    #     size_hint_y: None
+    #     # height: dp(860)
+    MDIconButton:
+        icon: 'arrow-left'
+        pos_hint: {'center_y': .95}
+        user_font_size: '30sp'
+        theme_text_color: 'Custom'
+        text_color: get_color_from_hex(colors['Blue']['800'])
+        on_release:
+            app.go_to_recent_screen()
+    
+    MDLabel:
+        text: "Cart Summary"
+        halign: 'center'
+        font_size: '26sp'
+        bold: True
+        adaptive_height:True
+        pos_hint: {'center_x':.5,'center_y': .95}

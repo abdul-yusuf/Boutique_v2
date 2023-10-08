@@ -1,0 +1,42 @@
+<OrderStatusScreenView>
+    MDLabel:
+        id: confirmation_msg
+        text: 'Success!'
+        font_size: '46sp'
+#        font_style: 'H2'
+        bold: True
+        halign: 'center'
+        pos_hint: {'center_x': 0.5,'center_y': 0.75}
+    Image:
+        source: "assets/images/img1.jpg"
+        size_hint: .4,.4
+        allow_stretch:
+        pos_hint: {'center_x': 0.5,'center_y': 0.65}
+
+    MDLabel:
+        id: msg
+        text: 'Thank You for completing your Order'
+        font_size: '18sp'
+        bold: True
+        halign: 'center'
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    MDLabel:
+        id: confirmation_msg
+        text: 'Your Order Payment Failed'
+        halign: 'center'
+        pos_hint: {'center_x': 0.5,'center_y': 0.45}
+
+    MDRaisedButton:
+        text: 'Track Order'
+        size_hint: .8,.065
+        font_style: 'Button'
+        pos_hint: {'center_x': 0.5,'center_y': 0.25}
+        on_press: app.add_screen('orders detail screen')
+
+    MDRectangleFlatButton:
+        text: 'Back to Shop'
+        size_hint: .8,.065
+        font_style: 'Button'
+        pos_hint: {'center_x': 0.5,'center_y': 0.15}
+        on_release: app.add_screen('home screen')
+

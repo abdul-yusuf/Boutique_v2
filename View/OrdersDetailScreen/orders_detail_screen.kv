@@ -1,0 +1,96 @@
+<OrdersDetailScreenView>
+    ScrollView:
+        MDBoxLayout:
+            size_hint_y: None
+            # md_bg_color: app.theme_cls.primary_light
+            padding: [0,dp(10)]
+            spacing: dp(10)
+            height: self.minimum_height
+            orientation: 'vertical'
+            MDBoxLayout:
+                size_hint_y: None
+                # md_bg_color: app.theme_cls.bg_dark
+                height: dp(40)
+                padding: [dp(10),dp(30)]
+                MDIconButton: 
+                    adaptive_width: True
+                    icon: 'arrow-left'
+                    pos_hint: {'center_x': 0.08,'center_y': 0.8}
+                    on_release: app.go_to_recent_screen()
+
+                MDLabel:
+                    text: "Track Order"
+                    font_style: 'H5'
+                    # halign: 'center'
+                    bold: True
+                    size_hint_x: .2
+                    pos_hint: {'center_x': 0.5,'center_y': 0.8}
+                MDBoxLayout:
+                    adaptive_width: True
+                    id: payment_btn_box
+                    pos_hint: {'center_x':.8,'center_y': 0.5}
+                    
+                    
+            MDBoxLayout:
+                # padding: dp(50)
+                size_hint_y: None
+                height: dp(20)
+
+                
+
+            BoxWithShadow:
+                id: top_box
+                padding: dp(15)
+                spacing: dp(20)
+                size_hint: .9, None
+                height: dp(184)
+                pos_hint: {'center_x': 0.5,'center_y': 0.35}
+                MDRelativeLayout:
+                    MDLabel:
+                        id: order_ref
+                        text: "Order: #23421"
+                        font_style: 'Body1'
+                        adaptive_height: True
+                        pos_hint: {'center_x': 0.5,'center_y': 0.92}
+                    MDSeparator:
+                        adaptive_height: True
+                        pos_hint: {'center_x': 0.5,'center_y': 0.86}
+                    MDLabel:
+                        id: product_title
+                        text: "Chiken, Beans,\n Garlic"
+                        font_style: 'Caption'
+                        bold: True
+                        pos_hint: {'center_x': 0.5,'center_y': 0.56}
+                    MDLabel:
+                        id: product_price
+                        text: "₦12000.00"
+                        font_style: 'Body2'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.36}
+                    RatingBox:
+                        size_hint_x: .6
+                        height: dp(5)
+                        pos_hint: {'center_x': 0.35,'center_y': 0.5}
+#                    FitImage:
+                    CarouselSlide:
+                        data: ['assets/images/cate-5.jpg','assets/images/cate-7.jpg',]
+                        pos_hint: {'center_x': 0.85,'center_y': .46}
+                        size_hint: .2,.4
+                        radius: [8,8,8,8]
+                        source: 'assets/images/cate-5.jpg'
+            
+                
+            MDBoxLayout:
+                adaptive_height: True
+                id: trackpad_box
+                padding: [dp(25),0]
+                pos_hint: {'center_x': 0.5,'top': 0.25}
+
+            
+            MDBoxLayout:
+                adaptive_height: True
+                id: courier_parent_box
+                padding: [dp(15),0]
+                # pos_hint: {'center_x': 0.5}
+
+                # pos_hint: {'center_x': 0.5,'top': 0.25}
+

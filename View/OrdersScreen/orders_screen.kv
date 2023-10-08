@@ -1,0 +1,111 @@
+<OrdersScreenView>
+    
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            size_hint_y: None
+            md_bg_color: app.theme_cls.bg_dark
+            height: dp(45)
+            padding: [dp(10),dp(20)]
+            MDIconButton:
+#                adaptive_width: True
+                icon: 'arrow-left'
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.primary_color
+                on_release: app.go_to_recent_screen()
+            MDLabel:
+#                adaptive_width: True
+#                size_hint: .1, None
+                text: "Order History"
+#                font_style: 'H5'
+                font_size: '26sp'
+                halign: 'center'
+#                bold: True
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.text_color
+                pos_hint: {'center_x': 0.5, 'center_y': .5}
+            # MDLabel:
+            #     adaptive_height: True
+            #     text: "Order History"
+            #     font_style: 'H4'
+            #     halign: 'center'
+        MDTabs:
+#            md_bg_color: app.theme_cls.bg_dark
+            background_color: app.theme_cls.bg_dark
+#            underline_color: app.theme_cls.primary_light
+            indicator_color: app.theme_cls.primary_color
+            text_color_normal: app.theme_cls.disabled_hint_text_color
+            text_color_active: app.theme_cls.text_color
+            tab_hint_x: True
+
+            Tab:
+                title: 'All Orders'
+                # size_hint: None, None
+                # height: root.height-top_title.height-dp(45)
+                # width: root.width
+                # pos_hint: {'center_x': 0.0,'center_y': 0.1}
+#                do_scroll_x: False
+#                  do_scroll_y: False
+                MDRecycleView:
+                    id: view_1
+#                    do_scroll_x:False
+                    viewclass: 'OrderTile'
+                    data: root.model._data
+                    # padding: 15
+
+                    MDRecycleGridLayout:
+                        cols:1
+                        spacing: 20
+                        adaptive_height: True
+                        default_size: None, None
+                        default_size_hint: .1, None
+                        padding: dp(15)
+                        spacing: dp(20)
+                        size_hint_y: None
+                        height: self.minimum_height
+
+            Tab:
+                title: 'In Transit'
+                MDRecycleView:
+                    id: view_2
+                    viewclass: 'OrderTile'
+                    effect_cls: 'ScrollEffect'
+                    scroll_distance: dp(1)
+                    do_scroll_x: False
+                    data: root.model._data_in_transit
+
+                    RecycleGridLayout:
+                        cols: 1
+                        spacing: dp(20)
+                        padding: [dp(13),dp(10),dp(10),dp(10)]
+                        size_hint_y: None
+                        default_size: None, None
+                        default_size_hint: .1, None
+                        height: self.minimum_height
+#                        md_bg_color: app.theme_cls.primary_light
+
+    
+
+            Tab:
+                title: 'Complete'
+#                do_scroll_x: False
+#                do_scroll_y: False
+                RecycleView:
+                    id: view_3
+                    do_scroll_x:False
+                    data: root.model._data_complete
+                    viewclass: 'OrderTile'
+#                    # padding: 15
+#
+                    RecycleGridLayout:
+                        cols:1
+                        spacing: 20
+                        adaptive_height: True
+                        default_size: None, None
+                        default_size_hint: .1, None
+                        padding: dp(15)
+                        spacing: dp(20)
+                        size_hint_y: None
+                        height: self.minimum_height
+

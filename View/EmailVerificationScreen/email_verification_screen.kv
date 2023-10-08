@@ -1,0 +1,75 @@
+<EmailVerificationScreenView>
+    MDLabel:
+        text: "Email Verification"
+        color:
+        font_style: 'H5'
+        pos_hint: {'center_x': 0.65,'center_y': .95}
+
+    MDIconButton:
+        icon: 'arrow-left'
+        pos_hint: {'center_y': .95}
+        user_font_size: '30sp'
+        theme_text_color: 'Custom'
+        text_color: get_color_from_hex(colors['Blue']['800'])
+        on_release:
+            app.go_to_recent_screen()
+
+    MDRelativeLayout:
+        size_hint: .8, .3
+        pos_hint: {'center_x': .55, 'center_y': .6}
+
+
+        MDLabel:
+            text: "We sent your code to +23456896484"
+            pos_hint: {'center_x': .5, 'center_y': .4}
+        MDLabel:
+            text: "Kindly Enter the code below"
+            pos_hint: {'left': 1.5, 'center_y': .3}
+        MDLabel:
+            text: "00:10"
+            pos_hint: {'center_x': 1.2, 'center_y': .3}
+            color: rgba(94,93,232,255)
+    MDTextField:
+        id: box1
+        size_hint: .1, None
+        # max_text_length: 1
+        pos_hint: {'center_x': 0.2,'center_y': 0.4}
+        mode: 'rectangle'
+        font_size: '28sp'
+        radius: [50]
+        on_text:
+            box2.focus=True
+
+    MDTextField:
+        id: box2
+        size_hint: .1, None
+        # max_text_length: 1
+        pos_hint: {'center_x': 0.4,'center_y': 0.4}
+        font_size: '28sp'
+        mode: 'rectangle'
+        on_text:
+            box3.focus=True
+
+    MDTextField:
+        id: box3
+        size_hint: .1, None
+        # max_text_length: 1
+        pos_hint: {'center_x': 0.6,'center_y': 0.4}
+        font_size: '28sp'
+        mode: 'rectangle'
+        on_text:
+            box4.focus=True
+
+    MDTextField:
+        id: box4
+        size_hint: .1, None
+        # max_text_length: 1
+        pos_hint: {'center_x': 0.8,'center_y': 0.4}
+        font_size: '28sp'
+        mode: 'rectangle'
+        on_text:
+            self.focus = False
+            root.model.code_check(box1,box2,box3,box4)
+            # box2.focus=True
+
+        # hint_text: 'Enter Code'

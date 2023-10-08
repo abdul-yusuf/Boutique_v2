@@ -1,0 +1,58 @@
+<SearchScreenView>:
+    md_bg_color: app.theme_cls.bg_normal
+    MDScrollViewRefreshLayout:
+        id: home_refresh_layout
+        root_layout: root
+        effect_cls: 'ScrollEffect'
+        # adaptive_height: True
+        MDBoxLayout:
+            adaptive_height: True
+            # size_hint_y: None
+            height: self.minimum_height
+            # height: root.height
+            orientation: 'vertical'
+            # md_bg_color: app.theme_cls.bg_normal
+            MDBoxLayout:
+                adaptive_height: True
+                padding: [5,10,20,20]
+                # size_hint_x: .9
+                pos_hint_y: .8
+                radius: [0,0,23,23]
+                spacing: dp(10)
+                # orientation: 'vertical'
+                md_bg_color: app.theme_cls.primary_color
+                MDIconButton: 
+                    adaptive_size: True
+                    # size_hint_x: .08
+                    icon: 'arrow-left'
+                    pos_hint: {'center_x': 0.01,'center_y':.38}
+                    on_release: app.go_to_recent_screen()
+                GenTextField:
+                    id: search_field
+                    mode: "round"
+                    icon_left: "magnify"
+                    hint_text: "Search Products Categories"
+                    multiline: False
+                    font_size: '18sp'
+                    coursor_width: '1.5sp'
+                    # on_text: root.controller.server_request(value=self.text)
+            MDBoxLayout:
+                adaptive_height: True
+                size_hint_y: None
+                height: root.height+dp(30)
+                data: root.model._data
+                RecycleView:
+                    id: view_1
+                    do_scroll_y: False
+                    do_scroll_x: False
+                    viewclass: 'Tile'
+                    RecycleGridLayout:
+                        spacing: 20
+                        padding: [15,10,10,10]
+                        size_hint_y: None
+                        default_size: None, None
+                        default_size_hint: .1, None
+                        height: self.minimum_height
+                        cols: 2
+                        md_bg_color: get_color_from_hex(colors['Brown']['400'])
+    
