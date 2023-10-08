@@ -113,7 +113,7 @@ from Utility.api_request import Api_request
 from Components.factory import register_factory
 from kivymd.toast import toast
 
-from Model.database import DataBase
+# from Model.database import DataBase
 
 register_factory()
 
