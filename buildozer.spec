@@ -35,10 +35,10 @@ version = 1.2.0
 requirements = python3, kivy==2.2.0, https://github.com/kivymd/KivyMD/archive/master.zip, pillow
 
 # (str) Presplash of the application
-presplash.filename = %(source.dir)s/assets/icons/logo-big.jpg
+# presplash.filename = %(source.dir)s/assets/icons/logo-big.jpg
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/assets/icons/logo.jpg
+# icon.filename = %(source.dir)s/assets/icons/logo.jpg
 
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = portrait 
