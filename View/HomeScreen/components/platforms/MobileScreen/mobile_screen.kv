@@ -46,8 +46,13 @@
                         # Widget:
                         MDIconButton:
                             icon: "account-circle-outline"
-                            on_release: print(root.parent.model.data)
-                            on_release: app.add_screen('login screen')
+                            on_release: 
+                                # print(root.parent.model.data)
+                                if app.authenticated:\
+                                app.add_screen("profile screen")
+                                # app.onNextScreen(root.name, 'my account screen')
+                                else:\
+                                app.add_screen("login screen")
                         BadgeBtnIcon:
                             id: badge_icon
                             icon: "cart-outline"
@@ -242,17 +247,22 @@
                 size: dp(120),dp(120)
                 pos_hint: {'center_x': 0.5,'center_y': 0.9}
                 on_press:
+                    if app.authenticated:\
+                    app.add_screen("profile screen")
+                    # app.onNextScreen(root.name, 'my account screen')
+                    else:\
                     app.add_screen("login screen")
+                    # root.show_alert_dialog("Please Login edit account")
 #                    app.onNextScreen(root.name, 'login screen')
 
 
-            TwoLineIconListItem:
-                id: user_detail
-                text: 'Sign in'
-                secondary_text: '*********'
-                pos_hint: {'center_x': 0.65,'center_y': 0.77}
-                divider: None
-                _ripple: False
+            # TwoLineIconListItem:
+            #     id: user_detail
+            #     text: 'Sign in'
+            #     secondary_text: '*********'
+            #     pos_hint: {'center_x': 0.65,'center_y': 0.77}
+            #     divider: None
+            #     _ripple: False
 
 
 <AccountItem@OneLineIconListItem>

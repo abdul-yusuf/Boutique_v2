@@ -62,10 +62,20 @@
                     background_color: 1, 1, 1, 0
                     foreground_color: rgba(0, 0, 59,255)
                     cursor_color: rgba(0, 0, 59,255)
+                    on_text: root.parent.controller.check_email_or_phone_no(self.text, username_error)
                 MDFloatLayout:
                     pos_hint: {'center_x': .45, 'center_y': .0}
                     size_hint_y: .03
                     md_bg_color: rgba(178, 178, 178, 255)
+                    MDRelativeLayout:
+                        pos_hint: {'center_x': .5, 'center_y': -8}
+                        MDLabel:
+                            id: username_error
+                            text: ''
+                            font_size: '14sp'
+                            bold: False
+#                            pos_hint: {'center_x': .5, 'center_y': -.95}
+                            color: get_color_from_hex(colors['Red']['500'])
             # MDFloatLayout:
 
             #     size_hint: .75, .07
@@ -114,6 +124,7 @@
                     background_color: 1, 1, 1, 0
                     foreground_color: rgba(0, 0, 59,255)
                     cursor_color: rgba(0, 0, 59,255)
+                    on_text: root.parent.controller.check_email_or_phone_no(self.text, error_box, 'pswd')
                     # on_text:
                         # root.password_check()
                     
@@ -125,10 +136,19 @@
                     pos_hint: {'center_x': .45, 'center_y': .0}
                     size_hint_y: .03
                     md_bg_color: rgba(178, 178, 178, 255)
-                    MDFloatLayout:
-                        id: error_box
-                        size_hint_y: .5
-                        pos_hint: {'center_x': 0.5,'center_y': 0.1}
+                    MDRelativeLayout:
+                        pos_hint: {'center_x': .5, 'center_y': -8}
+                        MDLabel:
+                            id: error_box
+                            text: ''
+                            font_size: '14sp'
+                            bold: False
+#                            pos_hint: {'center_x': .5, 'center_y': -.95}
+                            color: get_color_from_hex(colors['Red']['500'])
+                    # MDFloatLayout:
+                    #     id: error_box
+                    #     size_hint_y: .5
+                    #     pos_hint: {'center_x': 0.5,'center_y': 0.1}
 
                 
 
@@ -141,12 +161,13 @@
             #     required: True
 
             Button:
+                id: signup_btn
                 text: 'SIGNUP'
                 size_hint: .66, .065
                 background_color: 0, 0, 0, 0
                 pos_hint: {'center_x': .5, 'center_y': .34}
                 on_release:
-                on_press: root.controller.server_request(phone_no.text, email.text, password.text)
+                on_press: root.parent.controller.server_request(phone_no.text, email.text, password.text)
                 canvas.before:
                     Color:
                         rgb: app.theme_cls.primary_color

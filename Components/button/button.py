@@ -93,6 +93,15 @@ class Tile(RecycleKVIDsDataViewBehavior, MDCard):
 
     def on_release(self):
         # app = MDApp.get_running_app()
+        self.father.app.details_page_data = {
+                            'name': self.name,
+                            'price': self.price,
+                            'sale_price': self.sale_price,
+                            'source': self.image,
+                            'unit': 'each',
+                            # 'product': 'None',
+                            # 'father': self,
+                        }
         self.father.app.add_screen('detail screen')
 
     def add_2_cart_btn(self):
@@ -129,7 +138,7 @@ class CartTile(RecycleKVIDsDataViewBehavior, MDCardSwipe):
                 d=2.5/1,
                 ).start(self.ids.front_box)
 
-    
+
 
 class QtyBox(MDBoxLayout):
     qty_value = StringProperty('10')

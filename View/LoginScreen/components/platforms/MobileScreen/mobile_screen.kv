@@ -49,7 +49,7 @@
                     foreground_color: get_color_from_hex(colors['Blue']['50']) if app.theme_cls.theme_style == 'Dark' else rgba(0, 0, 59,255)
                     cursor_color: get_color_from_hex(colors['Blue']['50']) if app.theme_cls.theme_style == 'Dark' else rgba(0, 0, 59,255)
                     opposite_colors: True
-                    on_focus: root.parent.model.check_email_or_phone_no(self.text, username_error)
+                    on_text: root.parent.controller.check_email_or_phone_no(self.text, username_error)
 
                 MDFloatLayout:
                     pos_hint: {'center_x': .45, 'center_y': .0}
@@ -84,7 +84,7 @@
                     foreground_color: get_color_from_hex(colors['Blue']['50']) if app.theme_cls.theme_style == 'Dark' else rgba(0, 0, 59,255)
                     cursor_color: get_color_from_hex(colors['Blue']['50']) if app.theme_cls.theme_style == 'Dark' else rgba(0, 0, 59,255)
                     opposite_colors: True
-                    on_text: root.parent.model.check_email_or_phone_no(self.text, pswd_error, 'pswd')
+                    on_text: root.parent.controller.check_email_or_phone_no(self.text, pswd_error, 'pswd')
 
                 MDIconButton:
                     icon: "eye"
@@ -111,12 +111,13 @@
 
 
             Button:
+                id: login_btn
                 text: 'LOGIN'
                 size_hint: .66, .065
                 background_color: 0, 0, 0, 0
                 pos_hint: {'center_x': .5, 'center_y': .38}
                 on_release:
-                    root.parent.controller.get_request()
+                    root.parent.controller.authenticate()
 #                    root.parent.model.check_({'username':username.text,'password':password.text})
 #                    root.controller.server_request(username=username.text,password=password.text)
 

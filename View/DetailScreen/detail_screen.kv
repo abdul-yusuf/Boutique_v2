@@ -1,15 +1,20 @@
 <DetailScreenView>
     id: clean_root
     md_bg_color: app.theme_cls.bg_normal
-    
+    on_enter:
+        title.text = app.details_page_data['name']
+        carousel_slide.data = []
+        carousel_slide.data = [app.details_page_data['source']]
+        price.text = app.details_page_data['price']    
     MDBoxLayout:
         orientation: 'vertical'
         MDRelativeLayout:
             id: carousel
             size_hint_y: .42
             CarouselSlide:
+                id: carousel_slide
                 radius: [0,0,15,15]
-                data: root.model.data['images']
+                data: []
             # source1: 'assets/images/cate-12.jpg'
             
         ScrollView:
@@ -36,11 +41,11 @@
                     #         font_style: 'Caption'
                     ChipLabel:
                         id: price
-                        text: '₦12000.00/kg'
+                        # text: 
                         halign: 'right'
                 ChipLabel:
                     id: title
-                    text: 'Aska Biyu'
+                    # text: 
                     font_style: 'H6'
                     bold: True
                 Widget: 
@@ -55,7 +60,7 @@
                     width: dp(215)
                 ChipLabel:
                     id: description
-                    text: 'Lorem ipusm Lorem Lorem ipusm Lorem Lorem ipusm Lorem Lorem ipusm Lorem Lorem ipusm Lorem'
+                    text: ''
                     font_style: 'Body2'
                 Widget: 
                     size_hint_y: None
@@ -102,7 +107,7 @@
                     size_hint_y: .8
                     height: dp(160)
                     font_style: 'Button'     
-                    
+                    on_press: app.add_item_to_cart({'name':title.text,'price': str(price.text),'price_tag': str(price.text),'quantity': '1','unit': 'each','source': app.details_page_data['source']})
             QtyBox:
                 id: qty_box
                 size_hint: .8, .8

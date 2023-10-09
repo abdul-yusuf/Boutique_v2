@@ -33,28 +33,5 @@ class LoginScreenModel(BaseScreenModel):
             self.notify_observers('login screen')
             self.notify_observers('home screen')
 
-    def check_email_or_phone_no(self, data, instance, instance_name=None):
-
-        if instance_name == 'pswd':
-            if data == '':
-                instance.text = "Password can't be Empty"
-            elif len(data) <= 7:
-                instance.text = 'Enter Correct Password'
-            else:
-                instance.text = ''
-        else:
-            import re
-
-            phone_regex = r'^\+?\d{1,3}[- ]?\d{3}[- ]?\d{3}[- ]?\d{4}$'
-            email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-
-            def validate_phone_number(data):
-                if re.match(phone_regex, data):
-                    return True
-                elif re.match(email_regex, data):
-                    return True
-                return False
-            instance.text = 'Enter Email or Phone no'
     def authenticate(self, email, pwd):
         print(email, pwd) 
-        

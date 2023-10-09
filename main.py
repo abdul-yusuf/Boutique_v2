@@ -147,7 +147,15 @@ class EmroideryApp(MDApp):
         self.dialog.add_widget(spinner)
         self.add_screen("home screen", first=True)
         Window.bind(on_key_down=self.go_back)
-
+        
+        self.reg_users = [{
+            'mobile': '',
+            'email': 'emir@gmail.com',
+            'pwd': '1234'
+            }]
+        self.authenticated = False
+        self.login_details = {}
+        self.details_page_data = {}
         # for x in range(1):
         #     self.cart_items.append(
         #         {

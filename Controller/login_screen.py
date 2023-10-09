@@ -32,3 +32,53 @@ class LoginScreenController:
             self.view.app.add_screen("email verification screen", first=True)
         else:
             print('Error authenticating')
+    
+    def authenticate(self):
+        from kivymd.toast import toast
+        pwd = self.view.mobile_view.ids.password.text
+        email = self.view.mobile_view.ids.username.text
+        succ = False
+        for user in self.view.app.reg_users:
+            if user['pwd'] == pwd and user['email'] == email: 
+                toast('Login Successfully')
+                self.view.app.add_screen('home screen')
+                succ = True
+                self.view.app.authenticated=True
+                self.view.app.login_details = {
+                    'email': email,
+                    'mobile': user['mobile'] 
+                } 
+                break
+            # else: 
+        if not succ:
+            toast('Wrong Email or Password')
+
+    
+    def check_email_or_phone_no(self, data, instance, instance_name=None):
+
+        if instance_name == 'pswd':
+            if data == '':
+                instance.text = "Password can't be Empty"
+                self.view.mobile_view.ids.login_btn.disabled = True
+            elif len(data) <= 7:
+                instance.text = 'Enter at least 8 characters'
+                self.view.mobile_view.ids.login_btn.disabled = True
+            else:
+                self.view.mobile_view.ids.login_btn.disabled = False
+                instance.text = ''
+        else:
+            import re
+
+            # phone_regex = r'^\+?\d{1,3}[- ]?\d{3}[- ]?\d{3}[- ]?\d{4}$'
+            email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+            # def validate_phone_number(data):
+                # if re.match(phone_regex, data):
+                #     return True
+                # el
+            if re.match(email_regex, data):
+                instance.text = ''
+                # return True
+                # return False
+            else:
+                instance.text = 'Enter Email address'

@@ -21,7 +21,7 @@
                 padding: [dp(20),0]
 
                 MDLabel:
-                    text: "abdul17yusuf@gmail.com"
+                    text: app.login_details['email'] if app.authenticated else ""
                     color:
                     bold: True
                     font_style: 'Body2'
@@ -40,7 +40,7 @@
             GenTextField:
                 hint_text: 'Phone Number'
                 mode : 'rectangle'
-                text: '+234909310975'
+                text: app.login_details['mobile'] if app.authenticated else ''
                 disabled: 'True'
                 pos_hint: {'center_x': .55, 'center_y': .7}
 
